@@ -1,0 +1,1320 @@
+{
+	"info": {
+		"_postman_id": "89c37033-80d8-48f9-8037-4a448ab53d37",
+		"name": "e-commerce",
+		"description": "# 🚀 Get started here\n\nThis collection guides you through CRUD operations (GET, POST, PUT, DELETE), variables, and tests.\n\n## 🔖 **How to use this collection**\n\n#### **Step 1: Send requests**\n\nRESTful APIs allow you to perform CRUD operations using the POST, GET, PUT, and DELETE HTTP methods.\n\nThis collection contains each of these request types. Open each request and click \"Send\" to see what happens.\n\n#### **Step 2: View responses**\n\nObserve the response tab for status code (200 OK), response time, and size.\n\n#### **Step 3: Send new Body data**\n\nUpdate or add new data in \"Body\" in the POST request. Typically, Body data is also used in PUT and PATCH requests.\n\n```\n{\n    \"name\": \"Add your name in the body\"\n}\n\n```\n\n#### **Step 4: Update the variable**\n\nVariables enable you to store and reuse values in Postman. We have created a variable called `base_url` with the sample request [https://postman-api-learner.glitch.me](https://postman-api-learner.glitch.me). Replace it with your API endpoint to customize this collection.\n\n#### **Step 5: Add tests in the \"Tests\" tab**\n\nTests help you confirm that your API is working as expected. You can write test scripts in JavaScript and view the output in the \"Test Results\" tab.\n\n<img src=\"https://content.pstmn.io/b5f280a7-4b09-48ec-857f-0a7ed99d7ef8/U2NyZWVuc2hvdCAyMDIzLTAzLTI3IGF0IDkuNDcuMjggUE0ucG5n\">\n\n## 💪 Pro tips\n\n- Use folders to group related requests and organize the collection.\n- Add more scripts in \"Tests\" to verify if the API works as expected and execute flows.\n    \n\n## ℹ️ Resources\n\n[Building requests](https://learning.postman.com/docs/sending-requests/requests/)  \n[Authorizing requests](https://learning.postman.com/docs/sending-requests/authorization/)  \n[Using variables](https://learning.postman.com/docs/sending-requests/variables/)  \n[Managing environments](https://learning.postman.com/docs/sending-requests/managing-environments/)  \n[Writing scripts](https://learning.postman.com/docs/writing-scripts/intro-to-scripts/)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37535891"
+	},
+	"item": [
+		{
+			"name": "Staff",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "check",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Category",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "Colthes21",
+											"type": "text"
+										},
+										{
+											"key": "parent_id",
+											"value": "",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/categories",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"categories"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "colthes",
+											"type": "text"
+										},
+										{
+											"key": "parent_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/categories/23",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"categories",
+										"23"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/categories/24",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"categories",
+										"24"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "test product",
+											"type": "text"
+										},
+										{
+											"key": "brand_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "6",
+											"type": "text"
+										},
+										{
+											"key": "product_image",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/products",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"products"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "test 1 ",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "brand_id",
+											"value": "3",
+											"type": "text"
+										},
+										{
+											"key": "category_id",
+											"value": "",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "product_image",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "description",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/products/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"products",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/products/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"products",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Brand",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/brands",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"brands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "adids",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/brands",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"brands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "A",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/brands/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"brands",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/brands/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"brands",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product item",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/product_items",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_items"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"product_id\": 1,\n  \"quantity\": 1,\n  \"price\": 1,\n  // \"product_image\": \"test\",\n//   \"mfg\": \"2025/03/01\", \n//   \"exp\": \"2026/05/01\", \n \"attribute_option_ids\": [2]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/staff/product_items",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_items"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"product_id\": 1,\n//  \"quantity\": 1,\n//  \"price\": 1,\n// \"product_image\": \"test\",\n//   \"mfg\": \"2025/03/01\", \n//   \"exp\": \"2026/05/01\", \n \"attribute_option_ids\": [3]\n}\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/staff/product_items/36",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_items",
+										"36"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/product_items/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_items",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product attributes",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/product_attributes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_attributes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "category_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "color23",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/product_attributes",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_attributes"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "category_id",
+											"value": "10",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Color",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/product_attributes/45",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_attributes",
+										"45"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/product_attributes/45",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_attributes",
+										"45"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Product attributes option",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/product_attribute_options",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_attribute_options"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "product_attribute_id",
+											"value": "1",
+											"type": "text"
+										},
+										{
+											"key": "value",
+											"value": "red",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/product_attribute_options",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_attribute_options"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "product_attribute_id",
+											"value": "2",
+											"type": "text"
+										},
+										{
+											"key": "value",
+											"value": "red",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/product_attribute_options/133",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_attribute_options",
+										"133"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/product_attribute_options/133",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_attribute_options",
+										"133"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Offer",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/offers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"offers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"name\":\"test\",\n\"percentage\":\"3\",\n\"start_date\":\"2025/10/01\",\n\"end_date\":\"2026/01/02\",\n\"description\":\"bla bla\",\n\"offer_details\":[{\"id\":9,\"quantity\":\"100000\"},{\"id\":20,\"quantity\":\"4\"}]\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/staff/offers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"offers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\"offer_details\":[{\"id\":\"13\",\"quantity\":\"10\"}]\n\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/staff/offers/10",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"offers",
+										"10"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/product_attribute_options/133",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"product_attribute_options",
+										"133"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Delivery boy",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/delivery-boys",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"delivery-boys"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "show",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/delivery-boys/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"delivery-boys",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "post",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "first_name",
+											"value": "name",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "jood",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "user_name",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "birth_day",
+											"value": "2020/01/01",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "male",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "09122345612",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/delivery-boys",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"delivery-boys"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "first_name",
+											"value": "ahmad",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "jood",
+											"type": "text"
+										},
+										{
+											"key": "username",
+											"value": "Ah_jood",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "password_confirmation",
+											"value": "12345678",
+											"type": "text"
+										},
+										{
+											"key": "birth_day",
+											"value": "2020/01/01",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "male",
+											"type": "text"
+										},
+										{
+											"key": "phone_number",
+											"value": "0912345678",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/delivery-boys/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"delivery-boys",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "request otp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "phone_number",
+											"value": "0912345678",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "test@gmail.com",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/request-otp",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"request-otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "verify otp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "phone_number",
+											"value": "0912345678",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "email",
+											"value": "test@gmail.com",
+											"type": "text"
+										},
+										{
+											"key": "otp",
+											"value": "123456",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/verify-otp",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"verify-otp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "complete profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "53a5aa71-2945-4069-aff1-2b543c1dac0b",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "first_name",
+											"value": "ahmad",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "saeed",
+											"type": "text"
+										},
+										{
+											"key": "birth_date",
+											"value": "2020/01/01",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "male",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/complete-profile",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"complete-profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "first_name",
+											"value": "mohamed",
+											"type": "text"
+										},
+										{
+											"key": "last_name",
+											"value": "saadi",
+											"type": "text"
+										},
+										{
+											"key": "birth_date",
+											"value": "2020/01/01",
+											"type": "text"
+										},
+										{
+											"key": "gender",
+											"value": "male",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/user/update",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{userToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"logout"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Delivery boy",
+			"item": [
+				{
+					"name": "auth",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "username",
+											"value": "user_name",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "12345678",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/delivery-boy/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"delivery-boy",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "orders",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{deliveryBoyToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/delivery-boys/orders",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"delivery-boys",
+										"orders"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://postman-rest-api-learner.glitch.me/"
+		}
+	]
+}
