@@ -53,6 +53,24 @@
 								"header": []
 							},
 							"response": []
+						},
+						{
+							"name": "logout",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/logout",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"logout"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				},
@@ -166,6 +184,105 @@
 					]
 				},
 				{
+					"name": "Brand",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/brands",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"brands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "name",
+											"value": "adids",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/brands",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"brands"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "A",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/brands/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"brands",
+										"11"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/brands/11",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"brands",
+										"11"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "Product",
 					"item": [
 						{
@@ -174,13 +291,19 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/staff/products",
+									"raw": "{{url}}/staff/products?page=1",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"staff",
 										"products"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										}
 									]
 								}
 							},
@@ -311,105 +434,6 @@
 					]
 				},
 				{
-					"name": "Brand",
-					"item": [
-						{
-							"name": "get",
-							"request": {
-								"method": "GET",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/staff/brands",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"staff",
-										"brands"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "add",
-							"request": {
-								"method": "POST",
-								"header": [],
-								"body": {
-									"mode": "formdata",
-									"formdata": [
-										{
-											"key": "name",
-											"value": "adids",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/staff/brands",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"staff",
-										"brands"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "update",
-							"request": {
-								"method": "PUT",
-								"header": [],
-								"body": {
-									"mode": "urlencoded",
-									"urlencoded": [
-										{
-											"key": "name",
-											"value": "A",
-											"type": "text"
-										}
-									]
-								},
-								"url": {
-									"raw": "{{url}}/staff/brands/11",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"staff",
-										"brands",
-										"11"
-									]
-								}
-							},
-							"response": []
-						},
-						{
-							"name": "delete",
-							"request": {
-								"method": "DELETE",
-								"header": [],
-								"url": {
-									"raw": "{{url}}/staff/brands/11",
-									"host": [
-										"{{url}}"
-									],
-									"path": [
-										"staff",
-										"brands",
-										"11"
-									]
-								}
-							},
-							"response": []
-						}
-					]
-				},
-				{
 					"name": "Product item",
 					"item": [
 						{
@@ -418,13 +442,19 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/staff/product_items",
+									"raw": "{{url}}/staff/product_items?page=8",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"staff",
 										"product_items"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "8"
+										}
 									]
 								}
 							},
@@ -867,7 +897,7 @@
 							"response": []
 						},
 						{
-							"name": "post",
+							"name": "add",
 							"request": {
 								"method": "POST",
 								"header": [],
@@ -995,6 +1025,453 @@
 							"response": []
 						}
 					]
+				},
+				{
+					"name": "Order",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/orders?status=pending",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"orders"
+									],
+									"query": [
+										{
+											"key": "status",
+											"value": "pending"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "status",
+											"value": "pending",
+											"description": "pending,processing,delivered,cancelled",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "delivery_boy_id",
+											"value": "1",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "vehicle_id",
+											"value": "2",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/orders/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"orders",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Vehicle",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": []
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "make",
+											"value": "Kia",
+											"description": "Vehicle manufacturer (\"Toyota,\" \"Kia\")",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "K2700",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2025",
+											"type": "text"
+										},
+										{
+											"key": "vin",
+											"value": "1HGBH41JXMN109182",
+											"description": "رقم الشاسيه",
+											"type": "text"
+										},
+										{
+											"key": "vehicle_type_id",
+											"value": "21",
+											"description": "car,truck,motorcycle ......",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "available",
+											"description": "available , in_use , maintenance , out_of_service",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/vehicles",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"vehicles"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "make",
+											"value": "Kia",
+											"type": "text"
+										},
+										{
+											"key": "model",
+											"value": "K2700",
+											"type": "text"
+										},
+										{
+											"key": "year",
+											"value": "2025",
+											"type": "text"
+										},
+										{
+											"key": "vin",
+											"value": "1HGBH41JXMN109182",
+											"type": "text",
+											"disabled": true
+										},
+										{
+											"key": "vehicle_type_id",
+											"value": "21",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "available",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/vehicles/22",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"vehicles",
+										"22"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "VehicleType",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/vehicle-types",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"vehicle-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "type",
+											"value": "motorcicle",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/vehicle-types",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"vehicle-types"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "type",
+											"value": "test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/staff/vehicle-types/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"vehicle-types",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Supplier",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/suppliers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "store",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\":\"teddqet\",\n    \"address\": \"main test street\",\n    \"description\": \"A test supplier\",\n    \"communication_methods\": [\n      {\n        \"communication_method_id\": 1, \n        \"contact_detail\": \"test@explee.com\"\n        \n      },\n      {\n        \"communication_method_id\": 2, \n        \"contact_detail\": \"123\"\n   \n      }\n    ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/staff/suppliers",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"suppliers"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "update",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n//    \"name\":\"name c\",\n //   \"address\": \"main street\",\n //   \"description\": \"A test supplier\",\n    \"communication_methods\": [\n      {\n        \"communication_method_id\": 1, \n        \"contact_detail\": \"test@example.com\"\n        \n      }\n   ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/staff/suppliers/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"suppliers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "delete",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/suppliers/1",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"suppliers",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Purchase Invoice",
+					"item": [
+						{
+							"name": "get",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/staff/purchase-invoices",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"purchase-invoices"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "add",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "//{\n//  \"invoice_number\": \"Iw2q3dNeV-201124-001\",\n//  \"supplier_id\": 1,\n//  \"purchase_invoice_details\": [\n//    { \"product_item_id\": 1, \"quantity\": 5, \"unit_cost\": 10.50 },\n//    { \"product_item_id\": 3, \"quantity\": 2, \"unit_cost\": 15.00 }\n//  ]\n//}\n\n\n//new product items\n{\n  \"invoice_number\": \"INV-2024-002\",\n  \"supplier_id\": 1,\n  \"purchase_invoice_details\": [\n    { \"product_id\": 5, \"price\": 20, \"quantity\": 10, \"mfg\": \"2024-01-15\", \"exp\": \"2025-01-15\" , \"unit_cost\": 8.75},\n    { \"product_item_id\": 7, \"quantity\": 3, \"unit_cost\": 8.75 }\n  ]\n}\n\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/staff/purchase-invoices",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"staff",
+										"purchase-invoices"
+									]
+								}
+							},
+							"response": []
+						}
+					]
 				}
 			]
 		},
@@ -1085,7 +1562,7 @@
 									"bearer": [
 										{
 											"key": "token",
-											"value": "53a5aa71-2945-4069-aff1-2b543c1dac0b",
+											"value": "7141310a-1fec-41cc-8e06-08577e4234b0",
 											"type": "string"
 										}
 									]

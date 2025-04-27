@@ -2,33 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Vehicle\StoreVehicleRequest;
+use App\Http\Requests\Vehicle\UpdateVehicleRequest;
+use App\Http\Resources\VehicleResource;
 use App\Models\Vehicle;
+use App\Services\VehicleService;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
 {
+    public function __construct(protected VehicleService $vehicleService){}
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $vehicles=$this->vehicleService->index($request);
+
+        return $this->dataSuccessResponse(__('message.done'),'',VehicleResource::collection($vehicles));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+ 
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreVehicleRequest $request)
     {
-        //
+        $vehicle=$this->vehicleService->store($request);
+
+
+        return $this->dataSuccessResponse(__('done.added'),'',new VehicleResource($vehicle));
     }
 
     /**
@@ -36,30 +40,20 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        //
+        return $this->dataSuccessResponse(__('done'),'',new VehicleResource($vehicle));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Vehicle $vehicle)
-    {
-        //
-    }
-
+  
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Vehicle $vehicle)
+    public function update(UpdateVehicleRequest $request, Vehicle $vehicle)
     {
-        //
+        $this->vehicleService->update($request,$vehicle);
+
+        return $this->dataSuccessResponse(__('done.updated'),'',new VehicleResource($vehicle));
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Vehicle $vehicle)
-    {
-        //
-    }
+   
 }

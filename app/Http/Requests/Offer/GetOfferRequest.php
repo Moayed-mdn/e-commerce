@@ -3,8 +3,6 @@
 namespace App\Http\Requests\Offer;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
-
 class GetOfferRequest extends FormRequest
 {
     /**

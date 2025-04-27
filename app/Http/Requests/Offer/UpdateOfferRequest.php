@@ -4,7 +4,6 @@ namespace App\Http\Requests\Offer;
 
 use App\Rules\CheckProductItemQuantity;
 use Illuminate\Foundation\Http\FormRequest;
-
 class UpdateOfferRequest extends FormRequest
 {
     /**

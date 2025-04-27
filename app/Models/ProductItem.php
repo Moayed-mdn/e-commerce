@@ -19,6 +19,8 @@ class ProductItem extends Model
         'exp',
     ];
 
+    protected $perPage=10;
+
     public function product(){
         return $this->belongsTo(Product::class);
     }

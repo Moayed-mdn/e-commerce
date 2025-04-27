@@ -3,7 +3,6 @@
 namespace App\Http\Requests\ProductAttributeOption;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 class DeleteProductAttributeOptionRequest extends FormRequest
 {

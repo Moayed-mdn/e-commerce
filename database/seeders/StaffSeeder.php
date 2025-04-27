@@ -22,7 +22,7 @@ class StaffSeeder extends Seeder
             "username"=>"admin",
             "password"=>Hash::make('123'),
             "role_id"=>Role::ADMIN,
-            "birth_day"=>$faker->date('Y-m-d','-20 years'),
+            "birth_date"=>$faker->date('Y-m-d','-20 years'),
             "gender"=>$faker->randomElement(['male','female']),
             "created_at"=>now(),
             "updated_at"=>now(),

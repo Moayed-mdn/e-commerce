@@ -19,7 +19,7 @@ class BrandService {
 
     }
 
-    public function updateBrand($request,$brand){
+    public function updateBrand($request,Brand $brand){
       
 
         $brand->update($request->validated());
@@ -29,7 +29,7 @@ class BrandService {
     }
 
 
-    public function deleteBrand($brand){
+    public function deleteBrand(Brand $brand){
     
         $check=$brand->delete();
 

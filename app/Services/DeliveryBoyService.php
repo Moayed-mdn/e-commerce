@@ -20,24 +20,24 @@ class DeliveryBoyService{
 
     }
 
-    public function getAllDeliveryBoys()
+    public function index()
     {
         return DeliveryBoy::all(); 
     }
 
-    public function createDeliveryBoy($request):DeliveryBoy
+    public function store($request):DeliveryBoy
     {
         return DeliveryBoy::create($request->validated());
     }
 
-    public function updateDeliveryBoy($request, DeliveryBoy $deliveryBoy):bool
+    public function update($request, DeliveryBoy $deliveryBoy):bool
     {
            
       return  $deliveryBoy->update($request->validated());
 
     }
 
-    public function deleteDeliveryBoy(DeliveryBoy $deliveryBoy):bool
+    public function delete(DeliveryBoy $deliveryBoy):bool
     {
 
         return $deliveryBoy->delete(); 

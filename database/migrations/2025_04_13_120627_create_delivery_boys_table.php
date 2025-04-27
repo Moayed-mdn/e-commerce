@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('username')->unique();
             $table->string('password');
-            $table->date('birth_day');
+            $table->date('birth_date');
             $table->enum('gender',['male','female']);
             $table->string('phone_number')->unique();
             $table->boolean('is_active')->default(true);

@@ -20,11 +20,7 @@ class StaffService{
 
     }
 
-    public function createDeliveryBoy($request){
-        
-        return DeliveryBoy::create($request->validated());
-    }
-
+  
     // public function throwAuthException() {
     //     throw ;
     // }

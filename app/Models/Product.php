@@ -17,6 +17,7 @@ class Product extends Model
         "descriptoin"
     ];
 
+    protected $perPage=10;
     public function category(){
         return $this->belongsTo(Category::class);
     }

@@ -4,7 +4,7 @@ namespace App\Services;
 
 use App\Models\User;
 use Carbon\Carbon;
-use Illuminate\Support\Facades\Auth;
+;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Str;
 class UserService

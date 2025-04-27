@@ -19,9 +19,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $categories=$this->brandService->getBrandsForStaff();
+        $brands=$this->brandService->getBrandsForStaff();
 
-        return $this->dataSuccessResponse(__('message.done'),'', BrandResource::collection($categories));
+        return $this->dataSuccessResponse(__('message.done'),'', BrandResource::collection($brands));
 
 
     }

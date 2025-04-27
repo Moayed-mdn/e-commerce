@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Staff;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 class StaffLoginRequest extends FormRequest
 {
     /**
@@ -22,8 +21,11 @@ class StaffLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "username"=>['required','string','exists:staff,username'],
+            "username"=>['required','string'],
             "password"=>['required','string']
         ];
     }
+    
+
+
 }

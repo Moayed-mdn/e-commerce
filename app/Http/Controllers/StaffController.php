@@ -22,73 +22,57 @@ class StaffController extends Controller
         return true;
 
     }
-
-    public function login(StaffLoginRequest $request){
-
-        $staff=$this->staffService->login($request);
-
+    public function login(StaffLoginRequest $request)
+    {   
+        $staff = $this->staffService->login($request);
+    
         return $staff ?
             $this->authSuccessResponseWithCookie(
-                __('message.auth_success'),
+                __('auth.success'),  
                 $staff->createToken('API TOKEN')->plainTextToken,
                 new StaffResource($staff)                
-            ):
-            $this->errorResponse(__('message.auth_unsuccess'),'',401);
+            ) :
+            $this->errorResponse(__('auth.invalid_credentials'), '', 401); 
+    }
+    
+    public function logout(Request $request)
+    {
         
-
-
+        $request->user()->currentAccessToken()->delete();
+        
+        
+        return $this->authLogoutResponseWithExpiredCookie(
+            'Logout successful', 
+        );
     }
 
     public function indexDeliveryBoys()
     {
-        $deliveryBoys=$this->deliveryBoyService->getAllDeliveryBoys();
-
-        return $this->dataSuccessResponse(
-            __('message.done'),
-            '',
-            DeliveryBoyResource::collection($deliveryBoys));
-
+        $deliveryBoys = $this->deliveryBoyService->index();
+        return $this->dataSuccessResponse(__('response.done'), '', DeliveryBoyResource::collection($deliveryBoys));
     }
-
-    public function showDeliveryBoy(Request $request,DeliveryBoy $deliveryBoy)
-    {
-        return $this->dataSuccessResponse(__('message.done'),'',new DeliveryBoyResource($deliveryBoy));
-    }
-
-
-    public function createDeliveryBoy(CreateDeliveryBoyAccountRequest $request) {
-        
-
-        $deliveryBoy=$this->staffService->createDeliveryBoy($request);
-        
-        return $this->dataSuccessResponse(__('message.done'),
-        '',
-        new DeliveryBoyResource($deliveryBoy));
-
-    }
-
-    public function updateDeliveryBoy(UpdateDeliveryBoyRequest $request, DeliveryBoy $deliveryBoy)
-    {    //DTO data to object 
-        // Update an existing delivery boy
-
-        $this->deliveryBoyService->updateDeliveryBoy($request,$deliveryBoy);
-
-        
-        return $this->dataSuccessResponse(__('message.done.updated'),'',new DeliveryBoyResource($deliveryBoy));
-
-
-    }
-
     
-
-
+    public function showDeliveryBoy(Request $request, DeliveryBoy $deliveryBoy)
+    {
+        return $this->dataSuccessResponse(__('response.done'), '', new DeliveryBoyResource($deliveryBoy));
+    }
+    
+    public function createDeliveryBoy(CreateDeliveryBoyAccountRequest $request) 
+    {
+        $deliveryBoy = $this->deliveryBoyService->store($request);
+        return $this->dataSuccessResponse(__('response.stored'), '', new DeliveryBoyResource($deliveryBoy));
+    }
+    
+    public function updateDeliveryBoy(UpdateDeliveryBoyRequest $request, DeliveryBoy $deliveryBoy)
+    {
+        $this->deliveryBoyService->update($request, $deliveryBoy);
+        return $this->dataSuccessResponse(__('response.updated'), '', new DeliveryBoyResource($deliveryBoy));
+    }
+    
     public function deleteDeliveryBoy(Request $request, DeliveryBoy $deliveryBoy)
     {
-       
-        $this->deliveryBoyService->deleteDeliveryBoy($deliveryBoy);
-
-        return $this->successResponse(__('message.done.deleted'));
+        $this->deliveryBoyService->delete($deliveryBoy);
+        return $this->successResponse(__('response.deleted'));
     }
-
 
 }

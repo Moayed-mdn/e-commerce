@@ -9,7 +9,7 @@ class ProductItemService{
 
     public function getProdutItemsForStaff(){
 
-        return ProductItem::all();
+        return ProductItem::paginate();
 
     }    
 

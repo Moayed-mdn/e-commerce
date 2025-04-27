@@ -3,7 +3,6 @@
 namespace App\Http\Requests\OfferDetails;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 class UpdateOfferDetailsRequest extends FormRequest
 {
     /**

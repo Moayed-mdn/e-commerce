@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->foreignId('role_id')->constrained('roles')->cascadeOnDelete();
-            $table->date('birth_day');
+            $table->date('birth_date');
             $table->enum('gender',['male','female']);
             $table->boolean('is_active')->default(1);
             $table->timestamps();

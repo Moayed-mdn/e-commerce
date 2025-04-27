@@ -8,7 +8,7 @@ class ProductService {
 
     public function getProductsForStaff(){
         
-        return Product::all();
+        return Product::paginate();
 
     }
 

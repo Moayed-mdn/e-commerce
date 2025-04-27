@@ -22,6 +22,17 @@ trait ResponseTrait
         
     }
 
+    public function authLogoutResponseWithExpiredCookie($message)
+    {
+        $expiredCookie = cookie()->forget('token');
+        
+        return response()->json([
+            'status' => true,
+            'message' => $message,
+        ])->withCookie($expiredCookie);
+        
+    }
+
     public function authSuccessResponse($message, $token, $data = null, $code = 200)
     {
 
@@ -38,6 +49,24 @@ trait ResponseTrait
         ], $code);
         
         
+    }
+
+    public function paginateSuccessResponse($message, $data, $code = 200)
+    {
+
+        
+        return response()->json([
+            'message' => $message,
+            'status' => true,
+            'data' =>  $data->items(),
+            'meta' => [
+                'total' => $data->total(),
+                'count' => $data->count(),
+                'per_page' => $data->perPage(),
+                'current_page' => $data->currentPage(),
+                'total_pages' => $data->lastPage(),
+            ],
+        ]);
     }
 
     public function dataSuccessResponse($message, $res_code, $data, $code = 200)

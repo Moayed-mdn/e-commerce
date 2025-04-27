@@ -17,7 +17,7 @@ class VehicleTypeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'type' => $this->faker->unique()->word,
         ];
     }
 }

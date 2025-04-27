@@ -3,7 +3,6 @@
 namespace App\Http\Requests\Staff;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 class CreateDeliveryBoyAccountRequest extends FormRequest
 {
     /**
@@ -27,7 +26,7 @@ class CreateDeliveryBoyAccountRequest extends FormRequest
             'last_name'=> ['required','string','max:255'],
             'username'=> ['required','string','regex:/^[a-zA-Z]+_[a-zA-Z]+$/','min:3','max:255','unique:delivery_boys'],
             'password'=> ['required','string','min:8','confirmed'],
-            'birth_day'=> ['required','date_format:Y/m/d'],
+            'birth_date'=> ['required','date_format:Y/m/d'],
             'gender'=> ['required','in:male,female'],
             'phone_number'=> ['required','string','max:255','unique:delivery_boys']
         ];

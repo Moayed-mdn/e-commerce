@@ -20,6 +20,10 @@ class Vehicle extends Model
         'status'
     ];
 
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+
     public function vehicleType(){
         
         return $this->belongsTo(VehicleType::class);

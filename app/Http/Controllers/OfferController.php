@@ -22,7 +22,6 @@ class OfferController extends Controller
     public function index()
     {
 
-        dd($this->authorize('create'));
         $offers=$this->offerService->getOffersForStaff();
 
         return $this->dataSuccessResponse(__('message.done'),'',OfferResource::collection($offers));

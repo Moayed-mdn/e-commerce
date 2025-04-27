@@ -2,8 +2,7 @@
 
 namespace App\Http\Requests\ProductItem;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\FormRequest;;
 
 class GetProductItemRequest extends FormRequest
 {

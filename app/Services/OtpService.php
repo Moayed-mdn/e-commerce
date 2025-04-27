@@ -83,16 +83,12 @@ class OtpService
 
         if (!$user) {
             $column=$request->email?'email':'phone_number';
-            // dd($column,$identifier);
             $user = User::create([
                 $column => $identifier,
             ]);
         }
 
-        // You would typically log the user in here using Laravel's auth system
         
-        //auth()->login($user);
-
         return $user;
     }   
 

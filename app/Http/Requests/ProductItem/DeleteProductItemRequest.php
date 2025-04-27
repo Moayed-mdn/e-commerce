@@ -1,9 +1,8 @@
-<?php
-
+<?php   
+                                    
 namespace App\Http\Requests\ProductItem;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
 
 class DeleteProductItemRequest extends FormRequest
 {

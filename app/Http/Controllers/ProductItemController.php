@@ -21,7 +21,7 @@ class ProductItemController extends Controller
     {
         $productItems=$this->productItemService->getProdutItemsForStaff();
 
-        return $this->dataSuccessResponse(__('message.done'),'',ProductItemResource::collection($productItems));
+        return $this->paginateSuccessResponse(__('message.done'),ProductItemResource::collection($productItems));
     }
 
  

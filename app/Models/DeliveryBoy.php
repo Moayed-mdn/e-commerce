@@ -17,7 +17,7 @@ class DeliveryBoy extends User
         'last_name',
         'username',
         'password',
-        'birth_day',
+        'birth_date',
         'gender',
         'phone_number',
         'is_active',

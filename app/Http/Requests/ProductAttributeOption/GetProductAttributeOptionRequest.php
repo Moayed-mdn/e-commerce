@@ -2,8 +2,7 @@
 
 namespace App\Http\Requests\ProductAttributeOption;
 
-use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\FormRequest;;
 
 class GetProductAttributeOptionRequest extends FormRequest
 {

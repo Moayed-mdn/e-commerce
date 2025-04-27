@@ -3,7 +3,6 @@
 namespace App\Http\Requests\ProductAttributeOption;
 
 use Illuminate\Foundation\Http\FormRequest;
-
 class UpdateProductAttributeOptionRequest extends FormRequest
 {
     /**
