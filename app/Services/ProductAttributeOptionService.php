@@ -9,13 +9,18 @@ class ProductAttributeOptionService{
     
     public function getProductAttributeOptionForStaff(){
 
-        return ProductAttributeOption::all();
+        return ProductAttributeOption::orderBy('value','asc')->paginate();
     }    
 
     public function addProductAttributeOption($request):ProductAttributeOption
     {
 
-       return  ProductAttributeOption::create($request->validated());
+      $productAttributeOption=  ProductAttributeOption::create($request->validated());
+
+
+      $productAttributeOption->product_attribute_id=$request->product_attribute_id;
+
+      return $productAttributeOption;
 
     }
 

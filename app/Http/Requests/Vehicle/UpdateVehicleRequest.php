@@ -28,7 +28,7 @@ class UpdateVehicleRequest extends FormRequest
             'make'=>['required_without_all:model,year,vin,vehicle_type_id,status','string'],
             'model'=>['nullable','string'],
             'year'=>['nullable','digits:4', 'integer', 'between:1990,' . date('Y')],
-            'vin'=>['nullable','max:17','unique:vehicles,vin'],
+            'vin'=>['nullable','max:17','unique:vehicles,vin,'.$this->vehicle->id.',id'],
             'vehicle_type_id'=>['nullable','exists:vehicle_types,id'],
             'status'=>['nullable',Rule::in(VehicleStatus::getStatus())]
         ];

@@ -24,7 +24,7 @@ class UpdateOfferDetailsRequest extends FormRequest
             "name"=>['required_without_all:brand_id,category_id,OfferDetails_image,description','string'],
             "brand_id"=>['nullable','exists:brands,id'],
             "category_id"=>['nullable','exists:categories,id'],
-            "OfferDetails_image"=>['nullable','string'],
+            "OfferDetails_image"=>['nullable','image','mimes:png,jpg,jpeg','max:2048'], 
             "description"=>['nullable','string']
         ];
     }

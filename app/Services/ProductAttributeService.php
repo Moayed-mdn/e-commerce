@@ -9,7 +9,7 @@ class ProductAttributeService{
 
     public function getProductAttributeForStaff(){
 
-        return ProductAttribute::all();
+        return ProductAttribute::paginate();
     }    
 
     public function addProductAttribute($request):ProductAttribute

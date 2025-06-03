@@ -8,16 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-    
+
+    protected $perPage=10;
     protected $fillable=[
         "name",
         "brand_id",
         "category_id",
         "product_image",
-        "descriptoin"
+        "description" 
     ];
 
-    protected $perPage=10;
+
     public function category(){
         return $this->belongsTo(Category::class);
     }

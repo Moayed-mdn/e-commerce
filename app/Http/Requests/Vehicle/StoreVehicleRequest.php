@@ -29,7 +29,7 @@ class StoreVehicleRequest extends FormRequest
             'model'=>['required','string'],
             'year'=>['required','date_format:Y','before_or_equal:now','after:1990'],
             'vin'=>['required','unique:vehicles,vin'],
-            'vehicle_type_id'=>['required','exists:vehicle_types,id'],
+            'vehicle_type'=>['required','string','max:20'],
             'status'=>['required',Rule::in(VehicleStatus::getStatus())]
         ];
     }

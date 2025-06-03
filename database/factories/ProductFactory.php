@@ -22,8 +22,8 @@ class ProductFactory extends Factory
             'name' => $this->faker->words(3, true),
             'brand_id' => Brand::factory(), 
             'category_id' => Category::factory(),
-            'product_image' => $this->faker->imageUrl(),
+            'product_image' => 'product/default.png',
             'description' => $this->faker->paragraph,
-        ];
+        ]; 
     }
 }

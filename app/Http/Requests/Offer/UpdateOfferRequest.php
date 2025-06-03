@@ -10,7 +10,7 @@ class UpdateOfferRequest extends FormRequest
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
-    {
+    {   
         return true;
     }
 
@@ -23,15 +23,11 @@ class UpdateOfferRequest extends FormRequest
     {
         
         return [
-            "name"=>['required_without_all:percentage,start_date,end_date,description,offer_details','string'],
+            "name"=>['required_without_all:percentage,start_date,end_date,description','string'],
             "percentage"=>['nullable','numeric','min:1','max:99'],
-            "start_date"=>['nullable','date_format:Y/m/d','after_or_equal:today'],
-            "end_date"=>['nullable','date_format:Y/m/d','after:start_date'],
+            "start_date"=>['nullable','date_format:Y-m-d','after_or_equal:today'],
+            "end_date"=>['nullable','date_format:Y-m-d','after:start_date'],
             "description"=>['nullable','string'],
-            "product_ids"=>['nullable','array','min:1'],
-            "offer_details"=>['nullable','array','min:1'],
-            "offer_details.*.id"=>['nullable','exists:product_items,id'],
-            "offer_details.*.quantity"=>['required_with:offer_details','integer','min:1',new CheckProductItemQuantity()]
             
         ];
 

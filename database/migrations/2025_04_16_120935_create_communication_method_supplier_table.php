@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('supplier_id')->constrained('suppliers')->cascadeOnDelete();
             $table->foreignId('communication_method_id')->constrained('communication_methods')->cascadeOnDelete();
             $table->string('contact_detail')->unique();
-            $table->unique(['supplier_id','communication_method_id'],'supplier_comm_method_unique'); //{table_name}_{column_1}_{column_2}_unique
+            $table->unique(['supplier_id','communication_method_id'],'supplier_comm_method_unique'); 
             $table->timestamps();
         });
     }

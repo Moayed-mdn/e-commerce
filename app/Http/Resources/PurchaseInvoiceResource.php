@@ -20,6 +20,8 @@ class PurchaseInvoiceResource extends JsonResource
             'supplier'=>new SupplierResource($this->supplier),
             'total'=>$this->purchaseInvoiceDetails()->sum('unit_cost'),
             'invoice_details'=>PurchaseInvoiceDetailResource::collection($this->purchaseInvoiceDetails),
+            'created_at'=>$this->created_at->format('Y-m-d')
+
         ];
     }
 }

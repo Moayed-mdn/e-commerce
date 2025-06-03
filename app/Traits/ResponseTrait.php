@@ -45,14 +45,15 @@ trait ResponseTrait
         return response()->json([
             'status' => true,
             'message' => $message,
-            'data' => array_merge($dataArray, ['token' => $token]),
+            'user' => $data,
+            'token'=>$token
         ], $code);
         
         
     }
 
     public function paginateSuccessResponse($message, $data, $code = 200)
-    {
+    {   
 
         
         return response()->json([

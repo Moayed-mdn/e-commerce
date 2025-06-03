@@ -16,8 +16,10 @@ class ProductAttributeOptionResource extends JsonResource
     {   
         return [
             "id"=>$this->id,
-            "product_attribute"=>new ProductAttributeResource($this->productAttribute),
-            "value"=>$this->value
+            "product_attribute"=>$this->productAttribute,
+            "value"=>$this->value,
+            'created_at'=>$this->created_at->format('Y-m-d')
+
         ];
     }
 }

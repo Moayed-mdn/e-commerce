@@ -19,10 +19,11 @@ class ProductAttributeController extends Controller
      * Display a listing of the resource.
      */
     public function index(GetProductAttributeRequest $request)
-    {
+    {   
         $productAttributes=$this->productAttributeService->getProductAttributeForStaff();
 
-        return $this->dataSuccessResponse(__('message.done'),'',ProductAttributeResource::collection($productAttributes));
+        return $this->paginateSuccessResponse(__('message.done'),ProductAttributeResource::collection($productAttributes));
+   
     }
 
     
@@ -47,6 +48,7 @@ class ProductAttributeController extends Controller
 
 
 
+
     /**
      * Update the specified resource in storage.
      */
@@ -60,7 +62,7 @@ class ProductAttributeController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DeleteProductAttributeRequest $request,ProductAttribute $productAttribute)
+    public function destroy(ProductAttribute $productAttribute)
     {
         $this->productAttributeService->deleteProductAttribute($productAttribute);
 

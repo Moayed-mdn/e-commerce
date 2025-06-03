@@ -21,8 +21,9 @@ class ProductAttributeOptionController extends Controller
     public function index(GetProductAttributeOptionRequest $request)
     {
         $productAttributeOptions=$this->productAttributeOptionService->getProductAttributeOptionForStaff();
+        
+        return $this->paginateSuccessResponse(__('message.done'), ProductAttributeOptionResource::collection($productAttributeOptions));
 
-        return $this->dataSuccessResponse(__('message.done'),'',ProductAttributeOptionResource::collection($productAttributeOptions));
     }
 
     

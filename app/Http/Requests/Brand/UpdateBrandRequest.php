@@ -21,8 +21,8 @@ class UpdateBrandRequest extends FormRequest
      */
     public function rules(): array                    
     {       
-            return [
-            'name' => ['required','unique:brands,name,' . $this->brand->id . ',id', ],
+        return [
+            'name' => ['required','string','max:20','unique:brands,name,' . $this->brand->id . ',id' ], 
         ];
     }
 }

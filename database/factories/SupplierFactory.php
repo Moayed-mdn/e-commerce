@@ -30,7 +30,7 @@ class SupplierFactory extends Factory
     public function configure()
     {
         return $this->afterCreating(function (Supplier $supplier) {
-            $communicationMethods = CommunicationMethod::inRandomOrder()->take(rand(1, 2))->get(); 
+            $communicationMethods = CommunicationMethod::inRandomOrder()->take(2)->get(); 
 
             foreach ($communicationMethods as $method) {
                 $supplier->communicationMethods()->attach($method, [

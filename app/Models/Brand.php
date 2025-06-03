@@ -9,6 +9,8 @@ class Brand extends Model
 {
     use HasFactory;
 
+    protected $perPage=10;
+
     protected $fillable=[
         "name"
     ];

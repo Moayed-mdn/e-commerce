@@ -8,7 +8,7 @@ class SupplierService {
 
     public function getSuppliersForStaff(){
         
-        return  Supplier::all();
+        return  Supplier::paginate();
 
 
     }

@@ -23,8 +23,20 @@ class StoreCategoryRequest extends FormRequest
     public function rules(): array
     {      
         return [
-            "name"=>['required','string','unique:categories,name'],
+            "name"=>['required','string',"max:255",'unique:categories,name'],
             'parent_id'=>['nullable','exists:categories,id'],
+            'product_attributes'=>['nullable','array','min:1'],
+            'product_attributes.*.name'=>['required','string','max:255','distinct']  
+        ];
+    }
+
+
+    public function messages(){
+
+
+         return [
+            'product_attributes.*.name.distinct' => 'Product attribute  must be unique.',
+           
         ];
     }
 }

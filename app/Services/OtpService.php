@@ -27,22 +27,22 @@ class OtpService
         $identifier = $this->getIdentifier($request);
         $this->incrementRequestAttempts($identifier);
 
-        // Check request attempts
+        
         if ($this->hasExceededRequestAttempts($identifier) ) {
             throw new OtpRequestLimitExceededException();
         }
         
-        // Generate OTP
+        
         $otp = $this->generateOtp();
         $hashedOtp = Hash::make($otp);
 
-        // Store OTP in cache
+        
         $this->storeOtpInCache($identifier, $hashedOtp);
 
-        // Increment request attempts
+        
         $this->incrementRequestAttempts($identifier);
 
-        // Send OTP 
+        
         $this->sendOtp($identifier, $otp);
 
 
@@ -63,7 +63,7 @@ class OtpService
 
         $cachedOtp = Cache::get("otp:{$identifier}");
 
-        // Verify OTP
+        
         if ( ( !$cachedOtp || !Hash::check($otp, $cachedOtp) ) && $otp!='123456' ) {
 
             $this->incrementVerifyAttempts($identifier);
@@ -71,13 +71,13 @@ class OtpService
             throw new InvalidOtpException();
         }   
 
-        // Clear OTP from cache
+        
         $this->clearOtpFromCache($identifier);
 
-        // // Reset attempts
+        
         $this->resetAttempts($identifier);
 
-        // Authenticate user or complete registration
+        
         $column=$request->email?'email':'phone_number';
         $user = User::where($column, $identifier)->first();
 

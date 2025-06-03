@@ -19,7 +19,9 @@ class SupplierResource extends JsonResource
             'name'=>$this->name,  
             'address'=>$this->address,
             'description'=>$this->description,
-            "communication"=>CommunicationMethodResource::collection($this->communicationMethods)
+            "communication"=>CommunicationMethodResource::collection($this->communicationMethods),
+            'created_at'=>$this->created_at->format('Y-m-d')
+
         ];
     }
 }

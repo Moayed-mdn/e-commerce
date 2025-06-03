@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-
+    
     protected $fillable=[
         'name',
         'parent_id',
     ]; 
+    protected $perPage=10;
 
     public function parent(){
         return $this->belongsTo(Category::class,'parent_id');
@@ -27,7 +28,7 @@ class Category extends Model
     }
 
     public function productAttributes(){
-        return $this->hasMany(Category::class);
+        return $this->hasMany(ProductAttribute::class);
     }
 
 }

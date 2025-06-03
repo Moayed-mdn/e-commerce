@@ -21,8 +21,9 @@ class OfferResource extends JsonResource
             "start_date"=>$this->start_date,
             "end_date"=>$this->end_date,
             "description"=>$this->description,
-            "offer_details"=>OfferDetailsResource::collection($this->offerDetails)
-            
+            "offer_details"=>OfferDetailsResource::collection($this->offerDetails),
+            'created_at'=>$this->created_at->format('Y-m-d')
+
         ];
     }
 }

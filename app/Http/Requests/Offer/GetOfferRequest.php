@@ -22,7 +22,7 @@ class GetOfferRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            
         ];
     }
 }

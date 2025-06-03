@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Brand;
+namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class DeleteBrandRequest extends FormRequest
+class StoreItemToCart extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,7 +22,9 @@ class DeleteBrandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'product_item_id' => ['required'], 
+            'quantity' => ['required', 'integer', 'min:1'],    
         ];
+            
     }
 }

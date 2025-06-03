@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('purchase_invoices', function (Blueprint $table) {
             $table->id();
             $table->string('invoice_number')->unique();
-            $table->foreignId('supplier_id')->constrained('suppliers');
+            $table->foreignId('supplier_id')->constrained('suppliers')->cascadeOnDelete();
             $table->timestamps();
         });
     }

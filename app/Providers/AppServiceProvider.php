@@ -16,7 +16,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        
     }
 
     /**
@@ -30,9 +30,9 @@ class AppServiceProvider extends ServiceProvider
              
         });
 
-        // $this->loadRoutesFrom('routeapi.php');
-        // $this->loadViewsFrom('views', 'auth');
-        // 'auth::' // alias 
+        
+        
+        
 
 
     }

@@ -24,7 +24,7 @@ class UpdateUserRequest extends FormRequest
         return [
             'first_name'=>['required_without_all:last_name,birth_date,gender,is_active','string','min:3','max:12'],
             'last_name'=>['nullable','string','min:3','max:12'],
-            'birth_date'=>['nullable','date_format:Y/m/d'],
+            'birth_date'=>['nullable','date_format:Y-m-d'],
             'gender'=>['nullable','in:male,female'],
             
         ];

@@ -17,7 +17,9 @@ class OfferDetailsResource extends JsonResource
         return [
             "id"=>$this->id,
             "product_item"=>new ProductItemResource($this->productItem),
-            "qunatity"=>$this->quantity
+            "quantity"=>$this->quantity,
+            'created_at'=>$this->created_at->format('Y-m-d') 
+
         ];
     }
 }

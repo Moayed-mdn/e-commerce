@@ -12,7 +12,7 @@ class OfferService {
     public function __construct(protected OfferDetailsService $offerDetailsService){}
     public function getOffersForStaff(){
         
-        return Offer::all();
+        return Offer::paginate();
 
     }
 
@@ -32,10 +32,8 @@ class OfferService {
 
     public function updateOffer($request,Offer $offer):Offer{
 
-        if($request->offer_details)
-            $this->addOfferDetails($request,$offer->id);
-        else
-            $offer->update($request->validated());
+         
+        $offer->update($request->validated());
 
         return $offer;
 
@@ -59,6 +57,7 @@ class OfferService {
         }
 
     }
+
 
 
 

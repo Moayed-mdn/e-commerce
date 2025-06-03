@@ -23,7 +23,7 @@ class StoreProductAttributeOptionRequest extends FormRequest
 
         return [
             "product_attribute_id"=>['required','exists:product_attributes,id'],
-            "value"=>['required','string','unique:product_attribute_options,value']
+            "value" => ['required', 'string', 'unique:product_attribute_options,value,NULL,id,product_attribute_id,' . $this->product_attribute_id],
         ];
     }
 }

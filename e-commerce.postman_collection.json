@@ -545,13 +545,13 @@
 								"method": "GET",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/staff/product_attributes",
+									"raw": "{{url}}/staff/product-attributes",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"staff",
-										"product_attributes"
+										"product-attributes"
 									]
 								}
 							},
@@ -578,13 +578,13 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/staff/product_attributes",
+									"raw": "{{url}}/staff/product-attributes",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"staff",
-										"product_attributes"
+										"product-attributes"
 									]
 								}
 							},
@@ -612,13 +612,13 @@
 									]
 								},
 								"url": {
-									"raw": "{{url}}/staff/product_attributes/45",
+									"raw": "{{url}}/staff/product-attributes/45",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"staff",
-										"product_attributes",
+										"product-attributes",
 										"45"
 									]
 								}
@@ -631,13 +631,13 @@
 								"method": "DELETE",
 								"header": [],
 								"url": {
-									"raw": "{{url}}/staff/product_attributes/45",
+									"raw": "{{url}}/staff/product-attributes/45",
 									"host": [
 										"{{url}}"
 									],
 									"path": [
 										"staff",
-										"product_attributes",
+										"product-attributes",
 										"45"
 									]
 								}

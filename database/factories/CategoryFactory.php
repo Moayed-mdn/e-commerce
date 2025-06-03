@@ -24,11 +24,11 @@ class CategoryFactory extends Factory
     }
 
     
-    public function child(Category $parent) // Pass the parent category instance
+    public function child(Category $parent) 
     {
-        return $this->state(function (array $attributes) use ($parent) { // Use the $parent
+        return $this->state(function (array $attributes) use ($parent) { 
             return [
-                'parent_id' => $parent->id, // Assign the correct parent ID
+                'parent_id' => $parent->id, 
             ];
         });
     }

@@ -21,7 +21,6 @@ class UpdateProductAttributeRequest extends FormRequest
     public function rules(): array
     {   
         return [
-            "category_id"=>['required_without:name','exists:categories,id'],
             "name"=>['nullable','string','unique:product_attributes,name,'. $this->product_attribute->id .',id']
         ];
     }

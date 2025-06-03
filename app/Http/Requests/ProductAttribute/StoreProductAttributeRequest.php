@@ -2,8 +2,9 @@
 
 namespace App\Http\Requests\ProductAttribute;
 
-use Illuminate\Foundation\Http\FormRequest;class StoreProductAttributeRequest extends FormRequest
-{
+use Illuminate\Foundation\Http\FormRequest;
+
+class StoreProductAttributeRequest extends FormRequest{ 
     /**
      * Determine if the user is authorized to make this request.
      */
@@ -21,8 +22,7 @@ use Illuminate\Foundation\Http\FormRequest;class StoreProductAttributeRequest ex
     {
 
         return [
-            "category_id"=>['required','exists:categories,id'],
-            "name"=>['required','string','unique:product_attributes,name']
+            "name"=>['required','string','max:255']
         ];
     }
 }

@@ -24,7 +24,8 @@ class OfferController extends Controller
 
         $offers=$this->offerService->getOffersForStaff();
 
-        return $this->dataSuccessResponse(__('message.done'),'',OfferResource::collection($offers));
+        return $this->paginateSuccessResponse(__('message.done'), OfferResource::collection($offers));
+
 
     }
 

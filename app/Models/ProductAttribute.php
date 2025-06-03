@@ -10,7 +10,9 @@ class ProductAttribute extends Model
     /** @use HasFactory<\Database\Factories\ProductAttributeFactory> */
     use HasFactory;
 
-    protected $fillable=[
+    protected $perPage=5;
+
+    protected $fillable=[ 
         "category_id",
         "name"
 
@@ -24,4 +26,6 @@ class ProductAttribute extends Model
     public function productAttriubteOptions(){
         return $this->hasMany(ProductAttributeOption::class);
     }
+
+   
 }

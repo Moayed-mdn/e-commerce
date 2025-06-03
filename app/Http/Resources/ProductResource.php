@@ -19,8 +19,11 @@ class ProductResource extends JsonResource
             "name"=>$this->name,
             "brand"=>$this->brand,
             "category"=>new CategoryResource($this->category),
-            "image_url"=>$this->product_image,
+            'product_items'=>ProductItemResource::collection($this->productItems),
+            "product_image"=>$this->product_image,
             "description"=>$this->description,
+            "attributes"=>ProductAttributeResource::collection($this->category->productAttributes),
+            "created_at"=>$this->created_at->format('Y-m-d')
 
         ];
     }

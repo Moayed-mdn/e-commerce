@@ -22,7 +22,7 @@ class VehicleFactory extends Factory
             'model' => $this->faker->word(), 
             'year' => $this->faker->numberBetween(2000, 2024), 
             'vin' => $this->faker->unique()->regexify('[A-Z0-9]{17}'), 
-            'vehicle_type_id' => VehicleType::factory(), 
+            'vehicle_type' =>$this->faker->company(),
             'status' => $this->faker->randomElement(['available', 'in_use', 'maintenance', 'out_of_service']), 
         ];
     }

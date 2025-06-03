@@ -8,7 +8,7 @@ class BrandService {
 
     public function getBrandsForStaff(){
         
-        return  Brand::all();
+        return  Brand::paginate();
 
 
     }

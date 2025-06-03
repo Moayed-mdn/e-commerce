@@ -12,7 +12,7 @@ class PurchaseInvoiceDetailController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -20,7 +20,7 @@ class PurchaseInvoiceDetailController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -28,7 +28,7 @@ class PurchaseInvoiceDetailController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
@@ -36,7 +36,7 @@ class PurchaseInvoiceDetailController extends Controller
      */
     public function show(PurchaseInvoiceDetail $purchaseInvoiceDetail)
     {
-        //
+        
     }
 
     /**
@@ -44,7 +44,7 @@ class PurchaseInvoiceDetailController extends Controller
      */
     public function edit(PurchaseInvoiceDetail $purchaseInvoiceDetail)
     {
-        //
+        
     }
 
     /**
@@ -52,7 +52,7 @@ class PurchaseInvoiceDetailController extends Controller
      */
     public function update(Request $request, PurchaseInvoiceDetail $purchaseInvoiceDetail)
     {
-        //
+        
     }
 
     /**
@@ -60,6 +60,6 @@ class PurchaseInvoiceDetailController extends Controller
      */
     public function destroy(PurchaseInvoiceDetail $purchaseInvoiceDetail)
     {
-        //
+        
     }
 }

@@ -25,7 +25,8 @@ class SupplierController extends Controller
     {
         $suppliers=$this->supplierService->getSuppliersForStaff();
 
-        return $this->dataSuccessResponse(__('message.done'),'', SupplierResource::collection($suppliers));
+        return $this->paginateSuccessResponse(__('message.done'), SupplierResource::collection($suppliers));
+
 
 
     }
@@ -108,11 +109,11 @@ class SupplierController extends Controller
                 $communicationMethodId = $method['communication_method_id'];
                 $contactDetail = $method['contact_detail'];
     
-                // Prepare data for sync
+                
                 $communicationMethodsData[$communicationMethodId] = ['contact_detail' => $contactDetail];
             }
     
-            // Sync the communication methods; existing records will be updated and new ones added
+            
             $supplier->communicationMethods()->sync($communicationMethodsData);
         }
     }

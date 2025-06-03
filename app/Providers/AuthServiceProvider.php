@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Models\DeliveryBoy;
 use App\Models\Staff;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,7 +15,7 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        
     }
 
     /**
@@ -24,6 +25,11 @@ class AuthServiceProvider extends ServiceProvider
     {
         Gate::define('isAdmin', function ($user) {
             return $user instanceof Staff && $user->isAdmin(); 
+        });
+
+        Gate::define('isUser', function ($user) {
+
+            return $user instanceof User ; 
         });
 
         Gate::define('isDeliveryBoy',function ($user){

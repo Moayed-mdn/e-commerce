@@ -16,10 +16,10 @@ class OfferFactory extends Factory
      */
     public function definition(): array
     {
-    //     return [
-    //         'offer_id' => Offer::factory(), // Assuming you have an OfferFactory
-    //         'product_item_id' => ProductItem::factory(), // Assuming you have a ProductItemFactory
-    //         'quantity' => $this->faker->numberBetween(1, 10),
-    //     ];
+    
+    
+    
+    
+    
     }
 }

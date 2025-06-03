@@ -2,11 +2,14 @@
 
 namespace App\Services;
 
+use App\Models\ProductAttributeOption;
 use App\Models\ProductItem;
 use App\Models\PurchaseInvoice;
 use App\Models\PurchaseInvoiceDetail;
 
 class PurchaseInvoiceService {
+
+
 
     public function index(){
         
@@ -25,7 +28,6 @@ class PurchaseInvoiceService {
 
     public function update($request,PurchaseInvoice $purchaseInvoice){
       
-
         $purchaseInvoice->update($request->validated());
 
         return $purchaseInvoice;
@@ -34,17 +36,78 @@ class PurchaseInvoiceService {
 
     public function createProductItem($detail):ProductItem{
 
-        return ProductItem::create([
-            'product_id' => $detail['product_id'], 
-            'quantity' => 0, 
-            'price' => $detail['price'], 
-            'mfg' => $detail['mfg'],
-            'exp' => $detail['exp'],
-            
-        ]);
+        $validatedData = $detail;
+        unset($validatedData['product_image']);
+        
+        if (isset($detail['product_image']) && $detail['product_image'] instanceof \Illuminate\Http\UploadedFile) {
+            $file = $detail['product_image'];
+            $path = $file->store('productItem', 'public');
+            $validatedData['product_image'] = $path;
+        }
+
+
+        $productItem=ProductItem::create($validatedData);
+
+        if(isset($detail['attributes']))
+            $this->addAttributesToProductItem($detail['attributes'],$productItem);
+
+
+        return $productItem;
+        
 
 
     }
+
+    public function addAttributesToProductItem($attributes,$productItem){
+
+            foreach($attributes as $attribute){
+                $productAttributeOption=ProductAttributeOption::where('product_attribute_id',$attribute['id'])
+                    ->where('value',$attribute['value'])
+                    ->first();
+
+                if(!$productAttributeOption)
+                    $productAttributeOption= ProductAttributeOption::create([
+                        'product_attribute_id'=>$attribute['id'],
+                        'value'=>$attribute['value']
+                    ]);
+                
+
+                $productItem->attributeOptions()->attach($productAttributeOption->id);
+            }
+
+    }
+
+
+   public function updateProductItemAttributes($attributes, $productItem){
+    
+    $attributeOptionIds = [];
+
+   
+    foreach ($attributes as $attribute) {
+
+        
+        
+        $productAttributeOption = ProductAttributeOption::where('product_attribute_id', $attribute['id'])
+            ->where('value', $attribute['value'])
+            ->first();
+
+    
+        if (!$productAttributeOption) {
+            $productAttributeOption = ProductAttributeOption::create([
+                'product_attribute_id' => $attribute['id'],
+                'value' => $attribute['value']
+            ]);
+        }
+    
+       
+        $attributeOptionIds[] = $productAttributeOption->id;
+    }
+
+    
+    $productItem->attributeOptions()->sync($attributeOptionIds);
+
+    }
+
 
     public function createPurchaseInvoiceDetail(PurchaseInvoice $purchaseInvoice,ProductItem $productItem,$detail):PurchaseInvoiceDetail{
 
@@ -57,15 +120,25 @@ class PurchaseInvoiceService {
 
     }
 
-    public function updateProductItem(ProductItem $productItem,PurchaseInvoice $purchaseInvoice,$detail):bool{
+    public function updateProductItem(ProductItem $productItem,PurchaseInvoice $purchaseInvoice,$detail):ProductItem{
       
-        return $productItem->update([
+        
+        if(isSet($detail['attributes']))
+            $this->updateProductItemAttributes($detail['attributes'],$productItem);
+
+        $purchaseInvoiceDetail=PurchaseInvoiceDetail::where('purchase_invoice_id',$purchaseInvoice->id)->where('product_item_id',$productItem->id)->first();
+            
+        $productItem->update([  /// 100 
             'product_id' => $detail['product_id'] ?? $productItem->product_id, 
-            'quantity' => $detail['quantity'] ? $productItem->quantity -  $purchaseInvoice->quantity + $detail['quantity'] : $detail['quantity'] , 
+            'quantity' => isSet($detail['quantity']) ? ($productItem->quantity -  $purchaseInvoiceDetail->quantity) + $detail['quantity'] : $productItem->quantity , 
             'price' => $detail['price']  ?? $productItem->product_id, 
             'mfg' => $detail['mfg']  ?? $productItem->mfg,
             'exp' => $detail['exp']  ?? $productItem->exp ,
         ]);
+
+        
+
+        return $productItem;
     }
 
     public function updatePurchaseInvoiceDetail(PurchaseInvoiceDetail $purchaseInvoiceDetail,$detail):bool{
@@ -82,6 +155,8 @@ class PurchaseInvoiceService {
         foreach ($request->purchase_invoice_details as $detail) {
             if (isset($detail['product_item_id'])) {  
                 $productItem = ProductItem::findOrFail($detail['product_item_id']);
+                $productItem->quantity += $detail['quantity'];
+                $productItem->save();
             } else { 
                 
                 $productItem=$this->createProductItem($detail);
@@ -91,8 +166,6 @@ class PurchaseInvoiceService {
            $this->createPurchaseInvoiceDetail($purchaseInvoice,$productItem,$detail);
 
             
-            $productItem->quantity += $detail['quantity'];
-            $productItem->save();
         }
     }
 
@@ -114,7 +187,7 @@ class PurchaseInvoiceService {
                 }
 
 
-                $purchaseInvoiceDetail=PurchaseInvoiceDetail::where('product_item_id',$productItem->id)->first();
+                $purchaseInvoiceDetail=PurchaseInvoiceDetail::where('purchase_invoice_id',$purchaseInvoice->id)->where('product_item_id',$productItem->id)->first();
                 
 
                 $this->updatePurchaseInvoiceDetail($purchaseInvoiceDetail,$detail);

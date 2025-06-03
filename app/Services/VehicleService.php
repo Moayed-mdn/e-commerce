@@ -7,14 +7,13 @@ use App\Models\Vehicle;
 
 class VehicleService{
 
-    public function index($request){
+    public function index(){
 
-        $query=Vehicle::query();
+        
 
-        if($request->has('status')&&in_array($request->status,VehicleStatus::getStatus()))
-            $query->where('status',$request->status);
+      
 
-        return $query->get();
+        return  Vehicle::paginate() ;
 
     }
 

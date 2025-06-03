@@ -22,7 +22,7 @@ class DeliveryBoyService{
 
     public function index()
     {
-        return DeliveryBoy::all(); 
+        return DeliveryBoy::paginate(); 
     }
 
     public function store($request):DeliveryBoy

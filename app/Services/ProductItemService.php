@@ -3,6 +3,8 @@
 namespace App\Services;
 
 use App\Models\ProductItem;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Storage;
 
 class ProductItemService{
 
@@ -15,26 +17,52 @@ class ProductItemService{
 
     public function addProductItem($request):ProductItem
     {   
-        $productItem= ProductItem::create($request->except('attribute_option_ids'));
 
-        if($request->validated('attribute_option_ids'))
-           $productItem= $this->addAttributeOptionToProductItem($request,$productItem);
 
+
+        $validatedData = $request->except('product_image'); 
+
+        if ($request->hasFile('product_image')) {
+            $path = $request->file('product_image')->store('productItem', 'public');
+            $validatedData['product_image'] = $path;
+        }
+
+        $productItem = ProductItem::create($validatedData);
 
         return $productItem;  
+        
+        
+        
+        
+
+
+        
         
 
     }
 
     public function updateProductItem($request,ProductItem $productItem):ProductItem{
 
-        $productItem->update($request->validated());
+        $validated=$request->validated();
+        
+        if($request->hasFile('product_image')){
+
+           if($productItem->product_image&&Storage::disk('public')->exists($productItem->product_image)&&$productItem->product_image!='productItem/default.png'){
+               Storage::disk('public')->delete($productItem->product_image);
+           }
+
+            $path=$request->file('product_image')->store('productItem','public');
+            $validated['product_image']=$path;
+            Log::alert("path: $path");
+        }
+
+        $productItem->update($validated);
 
         if($request->except('attribute_option_ids'))
             $productItem= $this->addAttributeOptionToProductItem($request,$productItem);
 
         return $productItem;
-
+        
 
     }
 
@@ -50,7 +78,7 @@ class ProductItemService{
         $product_attribute_option_ids=$request->validated('attribute_option_ids');
 
 
-        $productItem->attributeOptions()->attach($product_attribute_option_ids);
+        $productItem->attributeOptions()->sync($product_attribute_option_ids);
 
 
         return $productItem;

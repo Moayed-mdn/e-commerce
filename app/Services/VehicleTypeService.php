@@ -8,7 +8,7 @@ class VehicleTypeService{
 
     public function index(){
 
-        return VehicleType::all();
+        return VehicleType::paginate();
 
     }
 

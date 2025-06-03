@@ -18,8 +18,8 @@ return new class extends Migration
             $table->string('model');
             $table->string('year');
             $table->string('vin')->unique();
-            $table->foreignId('vehicle_type_id')->constrained('vehicle_types')->cascadeOnDelete();
-            $table->enum('status',VehicleStatus::getStatus());
+            $table->string('vehicle_type');
+            $table->enum('status',VehicleStatus::getStatus())->default(VehicleStatus::AVAILABLE->value);
             $table->timestamps();
         });
     }

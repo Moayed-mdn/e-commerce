@@ -3,6 +3,8 @@
 namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Log;
+
 class UpdateProductRequest extends FormRequest
 {
     /**
@@ -21,10 +23,10 @@ class UpdateProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name"=>['required_without_all:brand_id,category_id,product_image,description','string'],
+            "name"=>['required_without_all:brand_id,category_id,product_image,description','string','unique:products,name,'.$this->product->id .',id'],
             "brand_id"=>['nullable','exists:brands,id'],
             "category_id"=>['nullable','exists:categories,id'],
-            "product_image"=>['nullable','string'],
+            "product_image"=>['nullable','image','mimes:png,jpg,jpeg','max:2048'], 
             "description"=>['nullable','string']
         ];
     }

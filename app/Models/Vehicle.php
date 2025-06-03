@@ -16,7 +16,7 @@ class Vehicle extends Model
         'year',
         'vin',
         'year',
-        'vehicle_type_id',
+        'vehicle_type',
         'status'
     ];
 

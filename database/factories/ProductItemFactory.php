@@ -17,7 +17,7 @@ class ProductItemFactory extends Factory
             'product_id' => Product::factory(), 
             'quantity' => $this->faker->numberBetween(10, 100),
             'price' => $this->faker->randomFloat(2, 10, 1000), 
-            'product_image' => $this->faker->imageUrl(), 
+            'product_image' =>'productItem/default.png', 
             'mfg' => $mfg->format('Y-m-d'), 
             'exp' => $exp->format('Y-m-d'), 
         ];

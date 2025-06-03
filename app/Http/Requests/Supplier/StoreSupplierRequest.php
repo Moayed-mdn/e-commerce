@@ -31,6 +31,24 @@ class StoreSupplierRequest extends FormRequest
             'communication_methods.*.communication_method_id'=>['required','exists:communication_methods,id'],
             'communication_methods.*.contact_detail'=>['required','string','unique:communication_method_supplier,contact_detail'],
             
-        ];
+            'communication_methods.0.contact_detail' => ['email'],
+
+            
+            'communication_methods.1.contact_detail' => ['min:8', 'max:10'],
+        ]; 
     }
+
+
+    public function messages(): array
+    {
+        return [
+            'communication_methods.0.contact_detail.required' => 'The Email contact detail field is required',
+            'communication_methods.1.contact_detail.required' => 'The Phone Number contact detail field is required',
+             'communication_methods.1.contact_detail.min' => 'The Phone Number must be at least :min characters',
+            'communication_methods.1.contact_detail.max' => 'The Phone Number may not be more than :max characters',
+            'communication_methods.0.contact_detail.email' => 'The Email contact detail must be a valid email address',
+        ];
+
+    }
+    
 }

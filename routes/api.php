@@ -19,8 +19,9 @@ require __DIR__ . '/api/staff/purchaseInvoice.php';
 
 // User (customer)
 require __DIR__ . '/api/user/auth.php';
-
-
-
+require __DIR__ . '/api/user/category.php';
+require __DIR__ . '/api/user/product.php';
+require __DIR__ . '/api/user/shopingCart.php'; 
+ 
 // Delivery boy
 require __DIR__ . '/api/deliveryBoy/auth.php';

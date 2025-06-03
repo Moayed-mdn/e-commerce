@@ -17,8 +17,10 @@ class ProductAttributeResource extends JsonResource
     {
         return [
             "id"=>$this->id,
-            "category"=>new CategoryResource($this->category),
-            "name"=>$this->name
+            "name"=>$this->name,
+            'category'=>$this->category,
+            "values"=>ProductAttributeOptionResource::collection($this->productAttriubteOptions),
+            'created_at'=>$this->created_at->format('Y-m-d')
         ];
     }
 }

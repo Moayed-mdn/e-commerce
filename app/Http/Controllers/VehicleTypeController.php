@@ -18,8 +18,7 @@ class VehicleTypeController extends Controller
     {
         $vehicleTypes=$this->vehicleTypeService->index();
 
-
-        return $this->dataSuccessResponse(__('message.done'),'',VehicleTypeResrouce::collection($vehicleTypes));
+        return $this->paginateSuccessResponse(__('message.done'), VehicleTypeResrouce::collection($vehicleTypes));
         
     }
 

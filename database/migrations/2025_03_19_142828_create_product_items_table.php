@@ -16,7 +16,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('products')->cascadeOnDelete();
             $table->unsignedInteger('quantity');
             $table->decimal('price');
-            $table->string('product_image')->nullable();
+            $table->string('product_image')->default('productItem/default.png');
             $table->date('mfg')->nullable();
             $table->date('exp')->nullable();
             $table->timestamps();

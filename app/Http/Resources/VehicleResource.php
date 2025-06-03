@@ -20,8 +20,9 @@ class VehicleResource extends JsonResource
             'model'=>$this->model,
             'year'=>$this->year,
             'vin'=>$this->vin, 
-            'vehicle_type'=>new VehicleTypeResrouce($this->vehicleType),
+            'vehicle_type'=>$this->vehicle_type,
             'status'=>$this->status,
+            'created_at'=>$this->created_at->format('Y-m-d')
         ];
     }
 }

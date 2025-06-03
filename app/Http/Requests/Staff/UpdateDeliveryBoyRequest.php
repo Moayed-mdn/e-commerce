@@ -27,7 +27,7 @@ class UpdateDeliveryBoyRequest extends FormRequest
             'last_name'=> ['nullable','string','max:255'],
             'username'=> ['nullable','string','regex:/^[a-zA-Z]+_[a-zA-Z]+$/','min:3','max:255','unique:delivery_boys,username,'. $this->deliveryBoy->id . ',id' ],
             'password'=> ['nullable','string','min:8','confirmed'],
-            'birth_date'=> ['nullable','date_format:Y/m/d'],
+            'birth_date'=> ['nullable','date_format:Y-m-d'],
             'gender'=> ['nullable','in:male,female'],
             'phone_number'=> ['nullable','string','max:255','unique:delivery_boys,phone_number']
         ];

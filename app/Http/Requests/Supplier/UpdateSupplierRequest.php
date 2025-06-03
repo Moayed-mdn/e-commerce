@@ -22,12 +22,12 @@ class UpdateSupplierRequest extends FormRequest
     {   
 
         return [
-            'name'=>['required_without_all:address,description,communication_methods','string','unique:suppliers,name'],
+            'name'=>['required_without_all:address,description,communication_methods','string','unique:suppliers,name,'.$this->supplier->id.',id'],
             'address'=>['nullable','string'],
             'description'=>['nullable','string'],
             'communication_methods'=>['nullable','array','min:1'], 
             'communication_methods.*.communication_method_id'=>['required_with:communication_methods','exists:communication_methods,id'],
-            'communication_methods.*.contact_detail'=>['required_with:communication_methods','string','unique:communication_method_supplier,contact_detail,'. $this->supplier->id .',id'],
+            'communication_methods.*.contact_detail'=>['required_with:communication_methods','string'],
         ];
     }
 }

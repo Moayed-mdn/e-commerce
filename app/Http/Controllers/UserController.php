@@ -9,13 +9,9 @@ use App\Http\Requests\User\OtpRequest;
 use App\Http\Requests\User\UpdateUserRequest;
 use App\Http\Requests\User\ValidOtpRequest;
 use App\Http\Resources\UserResource ;
-use App\Models\Staff;
-use App\Models\User;
 use App\Services\OtpService;
 use App\Services\UserService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
-;
 
 class UserController extends Controller
 {
@@ -46,8 +42,7 @@ class UserController extends Controller
     public function verifyOtp(ValidOtpRequest $request)
     {
        
-        // $expectedExceptions=[OtpRequestLimitExceededException::class , OtpRequestLimitExceededException::class ,InvalidOtpException::class,\Exception::class];
-
+       
 
         try{
 
@@ -62,16 +57,7 @@ class UserController extends Controller
         catch(\Exception $e){
             throw $e;
         }
-        // catch(\Throwable $e){
-        //     foreach ($expectedExceptions as $exceptionClass) {
-        //         if ($e instanceof $exceptionClass) {
-        //             throw  $e;
-        //         }
-        //     }
-            
-        //     throw $e;
-        
-        // }
+      
 
 
         

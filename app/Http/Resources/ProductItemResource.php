@@ -16,13 +16,17 @@ class ProductItemResource extends JsonResource
     {
         return [
             "id"=>$this->id,
-            'product'=>new ProductResource($this->product),
+            "product_attributes"=>$this->product->category->productAttributes,
+            'product_name'=>$this->product->name,
+            'product_id'=>$this->product->id,
+            'product'=>$this->product,
             'quantity'=>$this->quantity,
             'price'=>$this->price,
             'product_image'=>$this->product_image,
             'mfg'=>$this->mfg,
             'exp'=>$this->exp,
-            "attributes"=>ProductAttributeOptionResource::collection($this->attributeOptions)
+            "attributes"=>ProductAttributeOptionResource::collection($this->attributeOptions),
+            'created_at'=>$this->created_at->format('Y-m-d')
         ];
     }
 }

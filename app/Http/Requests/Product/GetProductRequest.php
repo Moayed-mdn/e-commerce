@@ -21,7 +21,7 @@ class GetProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            
         ];
     }
 }

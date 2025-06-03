@@ -17,7 +17,9 @@ class CommunicationMethodResource extends JsonResource
         return [
             'id'=>$this->id,
             'name'=>$this->name,
-            'contact_detail'=>$this->pivot->contact_detail
+            'contact_detail'=>$this->pivot->contact_detail,
+            'created_at'=>$this->created_at->format('Y-m-d')
+
         ];
     }
 }

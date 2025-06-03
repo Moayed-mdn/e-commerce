@@ -49,7 +49,9 @@ class StaffController extends Controller
     public function indexDeliveryBoys()
     {
         $deliveryBoys = $this->deliveryBoyService->index();
-        return $this->dataSuccessResponse(__('response.done'), '', DeliveryBoyResource::collection($deliveryBoys));
+    
+        return $this->paginateSuccessResponse(__('message.done'), DeliveryBoyResource::collection($deliveryBoys));
+
     }
     
     public function showDeliveryBoy(Request $request, DeliveryBoy $deliveryBoy)

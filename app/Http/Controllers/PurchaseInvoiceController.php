@@ -31,6 +31,7 @@ class PurchaseInvoiceController extends Controller
     public function store(StorePurchaseInvoiceRequest $request)
     {
        
+
         DB::beginTransaction();
 
         $purchaseInvoice=$this->purchaseInvoiceService->store($request);
@@ -70,11 +71,16 @@ class PurchaseInvoiceController extends Controller
 
     }
 
+    public function show(PurchaseInvoice $purchaseInvoice){
+
+        return $this->dataSuccessResponse(__('message.done'),'',new PurchaseInvoiceResource($purchaseInvoice));
+    }
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(PurchaseInvoice $purchaseInvoice)
     {
-        //
+        
     }
 }

@@ -23,6 +23,8 @@ class OrderResource extends JsonResource
             'delivery_boy_id'=>  new DeliveryBoyResource($this->deliveryBoy),
             'vehicle_id'=>   new VehicleResource($this->vehicle),
             'total'=>   $this->total,
+            'created_at'=>$this->created_at->format('Y-m-d')
+
         ];
     }
 }

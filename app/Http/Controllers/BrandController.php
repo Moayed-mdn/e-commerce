@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Brand\StoreBrandRequest;
 use App\Http\Requests\Brand\UpdateBrandRequest;
-use App\Http\Requests\Brand\DeleteBrandRequest;
 use App\Http\Resources\BrandResource;
 use App\Models\Brand;
 use App\Services\BrandService;
@@ -21,7 +20,7 @@ class BrandController extends Controller
     {
         $brands=$this->brandService->getBrandsForStaff();
 
-        return $this->dataSuccessResponse(__('message.done'),'', BrandResource::collection($brands));
+        return $this->paginateSuccessResponse(__('message.done'), BrandResource::collection($brands));
 
 
     }
@@ -33,6 +32,7 @@ class BrandController extends Controller
      */
     public function store(StoreBrandRequest $request){
       
+
         $brand=$this->brandService->addBrand($request);
         
         return $this->dataSuccessResponse(__('message.done.created'),'',new BrandResource($brand));
@@ -53,7 +53,6 @@ class BrandController extends Controller
      */
     public function update(UpdateBrandRequest $request, Brand $brand)
     {
-
         $brand=$this->brandService->updateBrand($request,$brand);
 
 
@@ -63,7 +62,7 @@ class BrandController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(DeleteBrandRequest $request,Brand $brand)
+    public function destroy(Brand $brand)
     {   
         $this->brandService->deleteBrand($brand);
         

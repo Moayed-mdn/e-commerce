@@ -17,9 +17,12 @@ class PurchaseInvoiceDetailResource extends JsonResource
 
       
         return [
+            "id"=>$this->id,
             'product_item'=>new ProductItemResource($this->productItem),
             'quantity'=>$this->quantity,
-            'unit_cost'=>$this->unit_cost
+            'unit_cost'=>$this->unit_cost,
+            'created_at'=>$this->created_at->format('Y-m-d')
+
         ];
     }
 }

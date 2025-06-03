@@ -22,10 +22,10 @@ class CompleteProfileRequest extends FormRequest
     {
 
         return [
-            'userId'=>['required','exists:users,id'],
+            'userId'=>['required','exists:users,id'], 
             'first_name'=>['required','string','min:3','max:12'],
             'last_name'=>['required','string','min:3','max:12'],
-            'birth_date'=>['required','date_format:Y/m/d'],
+            'birth_date'=>['required','date_format:Y-m-d'],
             'gender'=>['required','in:male,female'],
             
         ];

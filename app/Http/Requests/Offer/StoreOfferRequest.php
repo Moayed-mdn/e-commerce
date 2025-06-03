@@ -25,8 +25,8 @@ class StoreOfferRequest extends FormRequest
         return [
             "name"=>['required','string'],
             "percentage"=>['required','integer','min:1','max:99'],
-            "start_date"=>['required','date_format:Y/m/d','after_or_equal:today'],
-            "end_date"=>['required','date_format:Y/m/d','after:start_date'],
+            "start_date"=>['required','date_format:Y-m-d','after_or_equal:today'],
+            "end_date"=>['required','date_format:Y-m-d','after:start_date'],
             "description"=>['nullable','string'],
             "offer_details"=>['required','array','min:1'],
             "offer_details.*.id"=>['required','exists:product_items,id'],

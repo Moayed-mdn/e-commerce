@@ -9,7 +9,7 @@ class OfferDetailsService {
     
     public function getOfferDetailsForStaff(){
         
-        return OfferDetails::all();
+        return OfferDetails::paginate();
 
     }
 

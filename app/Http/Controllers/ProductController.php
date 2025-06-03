@@ -12,8 +12,8 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-
     public function __construct(protected ProductService $productService){}
+    
     /**
      * Display a listing of the resource.
      */
@@ -21,10 +21,25 @@ class ProductController extends Controller
     {
         $products=$this->productService->getProductsForStaff();
 
-        return $this->dataSuccessResponse(__('message.done'),'',ProductResource::collection($products));
+        return $this->paginateSuccessResponse(__('message.done'),ProductResource::collection($products));
+
 
     }
 
+    public function getProductsForUser(Request $reqeust){
+        
+        $products=$this->productService->getProductsForUser($reqeust);
+
+        return $this->paginateSuccessResponse(__('message.done'),ProductResource::collection($products));
+
+    }
+
+    public function homepageProducts(Request $request)
+    {
+        $products=$this->productService->homepageProducts($request);
+
+        return $this->dataSuccessResponse(__('message.done'),'',ProductResource::collection($products));
+    }
  
 
     /**
@@ -44,6 +59,25 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
+        return $this->dataSuccessResponse(__('message.done'),'',new ProductResource($product));
+
+    }
+
+    public function showproductItems($id)
+    {
+
+        
+        
+        
+        
+        $product = Product::with([
+            'productItems'=> function ($query) {
+                 $query->with('attributeOptions.productAttribute');  
+             }, 
+            'category', 
+            'brand',    
+        ])->find($id);
+
         return $this->dataSuccessResponse(__('message.done'),'',new ProductResource($product));
 
     }

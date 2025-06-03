@@ -19,7 +19,7 @@ class VehicleController extends Controller
     {
         $vehicles=$this->vehicleService->index($request);
 
-        return $this->dataSuccessResponse(__('message.done'),'',VehicleResource::collection($vehicles));
+        return $this->paginateSuccessResponse(__('message.done'), VehicleResource::collection($vehicles));
     }
 
  
@@ -55,5 +55,11 @@ class VehicleController extends Controller
 
     }
 
-   
+    
+     public function destroy(Vehicle $vehicle) 
+    {
+        $vehicle->delete();
+        return $this->dataSuccessResponse(__('done.deleted'),'',new VehicleResource($vehicle));
+
+    }
 }
